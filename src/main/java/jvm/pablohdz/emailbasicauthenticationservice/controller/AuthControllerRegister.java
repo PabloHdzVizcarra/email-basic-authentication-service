@@ -10,7 +10,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import jvm.pablohdz.emailbasicauthenticationservice.service.UserService;
+
 public class AuthControllerRegister implements HttpHandler {
+    UserService userService;
+
+    public AuthControllerRegister(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public void handle(HttpExchange exchange) {
@@ -24,10 +31,8 @@ public class AuthControllerRegister implements HttpHandler {
 
             ObjectMapper objectMapper = new ObjectMapper();
             UserRequest user = objectMapper.readValue(body, UserRequest.class);
-            System.out.println(user);
 
-
-
+            userService.saveUser(user);
         } catch (IOException e) {
             e.printStackTrace();
         }
