@@ -1,5 +1,6 @@
 package jvm.pablohdz.emailbasicauthenticationservice.server;
 
+import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -22,5 +23,9 @@ public class Server {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setupController(HttpHandler controller) {
+        server.createContext("/api/auth/register", controller);
     }
 }
