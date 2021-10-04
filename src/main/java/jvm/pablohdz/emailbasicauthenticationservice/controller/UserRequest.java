@@ -1,7 +1,7 @@
 package jvm.pablohdz.emailbasicauthenticationservice.controller;
 
-
 import java.sql.Timestamp;
+import java.time.Instant;
 
 public class UserRequest {
     private String name;
@@ -12,6 +12,7 @@ public class UserRequest {
     private Timestamp createAt;
 
     public UserRequest() {
+        createTime();
     }
 
     public UserRequest(
@@ -26,6 +27,7 @@ public class UserRequest {
         this.username = username;
         this.email = email;
         this.password = password;
+        createTime();
     }
 
     public String getName() {
@@ -74,6 +76,10 @@ public class UserRequest {
 
     public void setCreateAt(Timestamp createAt) {
         this.createAt = createAt;
+    }
+
+    private void createTime() {
+        this.createAt = new Timestamp(Instant.now().toEpochMilli());
     }
 
     @Override
