@@ -1,12 +1,32 @@
 package jvm.pablohdz.emailbasicauthenticationservice.controller;
 
 
+import java.sql.Timestamp;
+
 public class UserRequest {
     private String name;
     private String lastname;
     private String username;
     private String email;
     private String password;
+    private Timestamp createAt;
+
+    public UserRequest() {
+    }
+
+    public UserRequest(
+            String name,
+            String lastname,
+            String username,
+            String email,
+            String password
+    ) {
+        this.name = name;
+        this.lastname = lastname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getName() {
         return name;
@@ -46,6 +66,14 @@ public class UserRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Timestamp getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
     }
 
     @Override

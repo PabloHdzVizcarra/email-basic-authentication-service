@@ -13,7 +13,9 @@ import java.io.InputStreamReader;
 import jvm.pablohdz.emailbasicauthenticationservice.service.UserService;
 
 public class AuthControllerRegister implements HttpHandler {
-    UserService userService;
+    private final UserService userService;
+
+
 
     public AuthControllerRegister(UserService userService) {
         this.userService = userService;
@@ -21,8 +23,6 @@ public class AuthControllerRegister implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) {
-        String requestMethod = exchange.getRequestMethod();
-
         InputStream requestBody = exchange.getRequestBody();
         try {
 
